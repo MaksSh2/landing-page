@@ -2,69 +2,137 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Название проекта</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="bg-glow bg-glow--one"></div>
+<div class="bg-glow bg-glow--two"></div>
 
-<header class="hero">
-    <div class="container">
+<button class="drawer-toggle" id="drawerToggle" aria-label="Открыть дополнительное меню" aria-expanded="false" aria-controls="infoDrawer">
+    ☰
+</button>
+
+<aside class="drawer" id="infoDrawer" aria-hidden="true">
+    <div class="drawer__header">
+        <h2>Дополнительно</h2>
+        <button class="drawer__close" id="drawerClose" aria-label="Закрыть дополнительное меню">✕</button>
+    </div>
+
+    <div class="drawer-tabs" role="tablist" aria-label="Дополнительные вкладки">
+        <button class="drawer-tab active" role="tab" aria-selected="true" aria-controls="panel-title" id="tab-title" data-tab="title">Название</button>
+        <button class="drawer-tab" role="tab" aria-selected="false" aria-controls="panel-info" id="tab-info" data-tab="info">Информация</button>
+        <button class="drawer-tab" role="tab" aria-selected="false" aria-controls="panel-extra" id="tab-extra" data-tab="extra">Доп. вкладка</button>
+    </div>
+
+    <div class="drawer-panel active" id="panel-title" role="tabpanel" aria-labelledby="tab-title" data-panel="title">
+        <h3>Название</h3>
+        <p>Здесь можно добавить название раздела, продукта или отдельного направления.</p>
+    </div>
+    <div class="drawer-panel" id="panel-info" role="tabpanel" aria-labelledby="tab-info" data-panel="info">
+        <h3>Информация</h3>
+        <p>Этот блок оставлен для вашей информации: описание, детали, условия и др.</p>
+    </div>
+    <div class="drawer-panel" id="panel-extra" role="tabpanel" aria-labelledby="tab-extra" data-panel="extra">
+        <h3>Доп. вкладка</h3>
+        <p>Свободное место для будущего контента, который вы добавите самостоятельно.</p>
+    </div>
+</aside>
+
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+
+<header class="hero reveal">
+    <div class="container hero__container">
         <div class="hero-text">
-            <h1>Заголовок</h1>
-            <p>Подзаголовок</p>
-            <button>Оставить заявку</button>
+            <span class="badge">Современный сайт</span>
+            <h1>Красивый, адаптивный и удобный лендинг</h1>
+            <p>Аккуратная типографика, плавные анимации, продуманная структура и адаптация под мобильные устройства.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary">Оставить заявку</button>
+                <button class="btn btn-secondary">Узнать подробнее</button>
+            </div>
         </div>
-        <div class="hero-image">
-            <img src="img/hero.jpg" alt="Картинка">
+        <div class="hero-visual">
+            <div class="glass-card floating">
+                <p>UI / UX</p>
+                <strong>+ Анимации</strong>
+            </div>
+            <div class="glass-card floating delay">
+                <p>Mobile First</p>
+                <strong>Адаптив 100%</strong>
+            </div>
         </div>
     </div>
 </header>
 
-<section class="about">
-    <h2>О нас</h2>
-    <p>Текст о компании</p>
-</section>
+<main>
+    <section class="about reveal">
+        <div class="container section__container">
+            <h2>О нас</h2>
+            <p>Мы делаем лаконичные сайты, которые выглядят современно и помогают пользователю быстро находить нужную информацию.</p>
+        </div>
+    </section>
 
-<section class="advantages">
-    <h2>Преимущества</h2>
-    <div class="cards">
-        <div class="card">Преимущество 1</div>
-        <div class="card">Преимущество 2</div>
-        <div class="card">Преимущество 3</div>
-    </div>
-</section>
+    <section class="advantages reveal">
+        <div class="container section__container">
+            <h2>Преимущества</h2>
+            <div class="cards">
+                <article class="card">⚡ Быстрая загрузка и лёгкая структура</article>
+                <article class="card">🎯 Чёткие акценты и удобная навигация</article>
+                <article class="card">📱 Полная адаптация под смартфоны и планшеты</article>
+            </div>
+        </div>
+    </section>
 
-<section class="steps">
-    <h2>Как это работает</h2>
-    <div class="step">Шаг 1</div>
-    <div class="step">Шаг 2</div>
-    <div class="step">Шаг 3</div>
-</section>
+    <section class="steps reveal">
+        <div class="container section__container">
+            <h2>Как это работает</h2>
+            <div class="steps-grid">
+                <div class="step"><span>1</span> Оставляете заявку</div>
+                <div class="step"><span>2</span> Согласуем задачу</div>
+                <div class="step"><span>3</span> Запускаем проект</div>
+            </div>
+        </div>
+    </section>
 
-<section class="reviews">
-    <h2>Отзывы</h2>
-    <div class="review">Отзыв 1</div>
-    <div class="review">Отзыв 2</div>
-</section>
+    <section class="reviews reveal">
+        <div class="container section__container">
+            <h2>Отзывы</h2>
+            <div class="reviews-grid">
+                <blockquote class="review">«Очень аккуратно и стильно, особенно на телефоне.»</blockquote>
+                <blockquote class="review">«Понравилась анимация и удобство страницы.»</blockquote>
+            </div>
+        </div>
+    </section>
 
-<section class="pricing">
-    <h2>Тарифы</h2>
-    <div class="price-card">Тариф 1</div>
-    <div class="price-card">Тариф 2</div>
-</section>
+    <section class="pricing reveal">
+        <div class="container section__container">
+            <h2>Тарифы</h2>
+            <div class="pricing-grid">
+                <article class="price-card">Старт<br><strong>от 9 900 ₽</strong></article>
+                <article class="price-card featured">Стандарт<br><strong>от 19 900 ₽</strong></article>
+                <article class="price-card">Премиум<br><strong>от 39 900 ₽</strong></article>
+            </div>
+        </div>
+    </section>
 
-<section class="contact">
-    <h2>Оставить заявку</h2>
-    <form>
-        <input type="text" placeholder="Имя">
-        <input type="email" placeholder="Email">
-        <button type="submit">Отправить</button>
-    </form>
-</section>
+    <section class="contact reveal">
+        <div class="container section__container">
+            <h2>Оставить заявку</h2>
+            <form>
+                <input type="text" placeholder="Имя">
+                <input type="email" placeholder="Email">
+                <button class="btn btn-primary" type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+</main>
 
 <footer>
     <p>© 2026 Название компании</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
