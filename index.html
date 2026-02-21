@@ -3,211 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Название проекта</title>
+    <title>Лендинг для бизнеса</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="bg-glow bg-glow--one"></div>
-<div class="bg-glow bg-glow--two"></div>
+    <button class="drawer-toggle" id="drawerToggle" aria-label="Открыть дополнительное меню" aria-expanded="false" aria-controls="infoDrawer">☰</button>
 
-<button class="drawer-toggle" id="drawerToggle" aria-label="Открыть дополнительное меню" aria-expanded="false" aria-controls="infoDrawer">
-    ☰
-</button>
-
-<aside class="drawer" id="infoDrawer" aria-hidden="true">
-    <div class="drawer__header">
-        <h2>Дополнительно</h2>
-        <button class="drawer__close" id="drawerClose" aria-label="Закрыть дополнительное меню">✕</button>
-    </div>
-
-    <div class="drawer-tabs" role="tablist" aria-label="Дополнительные вкладки">
-        <button class="drawer-tab active" role="tab" aria-selected="true" aria-controls="panel-title" id="tab-title" data-tab="title">Название</button>
-        <button class="drawer-tab" role="tab" aria-selected="false" aria-controls="panel-info" id="tab-info" data-tab="info">Информация</button>
-        <button class="drawer-tab" role="tab" aria-selected="false" aria-controls="panel-extra" id="tab-extra" data-tab="extra">Доп. вкладка</button>
-
-    <div class="drawer-panel active" id="panel-title" role="tabpanel" aria-labelledby="tab-title" data-panel="title">
-        <h3>Название</h3>
-        <p>Здесь можно добавить название раздела, продукта или отдельного направления.</p>
-    </div>
-    <div class="drawer-panel" id="panel-info" role="tabpanel" aria-labelledby="tab-info" data-panel="info">
-        <h3>Информация</h3>
-        <p>Этот блок оставлен для вашей информации: описание, детали, условия и др.</p>
-    </div>
-    <div class="drawer-panel" id="panel-extra" role="tabpanel" aria-labelledby="tab-extra" data-panel="extra">
-        <h3>Доп. вкладка</h3>
-        <p>Свободное место для будущего контента, который вы добавите самостоятельно.</p>
-    </div>
-
-    <div class="tooltip-container">
-        <span class="text">
-            <svg
-            viewBox="0 0 16 16"
-            class="bi bi-send-fill"
-            height="22"
-            width="22"
-            xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-                d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"
-            ></path>
-            </svg>
-        </span>
-        <!--<span class="tooltip8">
-            <svg
-            viewBox="0 0 16 16"
-            class="bi bi-twitter"
-            height="20"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"
-            ></path>
-            </svg>
-        </span>-->
-        <span class="tooltip2">
-            <svg
-            viewBox="0 0 16 16"
-            class="bi bi-facebook"
-            height="20"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
-            ></path>
-            </svg>
-        </span>
-        <span class="tooltip5">
-            <svg
-            viewBox="0 0 16 16"
-            class="bi bi-whatsapp"
-            height="20"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-                d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
-            ></path>
-            </svg>
-        </span>
-        <span class="tooltip4">
-            <svg
-            viewBox="0 0 16 16"
-            class="bi bi-discord"
-            height="20"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-                d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"
-            ></path>
-            </svg>
-        </span>
-
-        <span class="tooltip9"> </span>
+    <aside class="drawer" id="infoDrawer" aria-hidden="true">
+        <div class="drawer__header">
+            <h2>Дополнительно</h2>
+            <button class="drawer__close" id="drawerClose" aria-label="Закрыть дополнительное меню">✕</button>
         </div>
 
+        <div class="drawer-tabs" role="tablist" aria-label="Дополнительные вкладки">
+            <button class="drawer-tab active" role="tab" aria-selected="true" aria-controls="panel-title" id="tab-title" data-tab="title">Название</button>
+            <button class="drawer-tab" role="tab" aria-selected="false" aria-controls="panel-info" id="tab-info" data-tab="info">Информация</button>
+            <button class="drawer-tab" role="tab" aria-selected="false" aria-controls="panel-extra" id="tab-extra" data-tab="extra">Стек</button>
+        </div>
 
+        <div class="drawer-panel active" id="panel-title" role="tabpanel" aria-labelledby="tab-title" data-panel="title">
+            <h3>Лендинг нового поколения</h3>
+            <p>Чистый дизайн, продуманная структура и акцент на конверсию.</p>
+        </div>
+        <div class="drawer-panel" id="panel-info" role="tabpanel" aria-labelledby="tab-info" data-panel="info">
+            <h3>Информация</h3>
+            <p>Есть серверная часть на Node.js и API для формы обратной связи.</p>
+        </div>
+        <div class="drawer-panel" id="panel-extra" role="tabpanel" aria-labelledby="tab-extra" data-panel="extra">
+            <h3>React + Node.js</h3>
+            <p>Добавлены карточки анимаций и сервер для размещения на reg.ru.</p>
+        </div>
 
-    </div>
+        <div class="tooltip-container" aria-label="Контакты">
+            <span class="contact-icon">✉</span>
+            <a class="contact-bubble" href="#">TG</a>
+            <a class="contact-bubble" href="#">WA</a>
+            <a class="contact-bubble" href="#">VK</a>
+        </div>
+    </aside>
 
-</aside>
+    <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
 
-<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+    <header class="site-header reveal">
+        <div class="container header__container">
+            <a class="logo" href="#">Studio<span>.</span></a>
+            <nav class="nav">
+                <a href="#about">О нас</a>
+                <a href="#stack">Технологии</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+            <button class="btn btn-secondary">Консультация</button>
+        </div>
+    </header>
 
-<header class="hero reveal">
-    <div class="container hero__container">
-        <div class="hero-text">
-            <span class="badge">Современный сайт</span>
-            <h1>Красивый, адаптивный и удобный лендинг</h1>
-            <p>Аккуратная типографика, плавные анимации, продуманная структура и адаптация под мобильные устройства.</p>
-            <div class="hero-actions">
-                <button class="btn btn-primary">Оставить заявку</button>
-                <button class="btn btn-secondary">Узнать подробнее</button>
+    <main>
+        <section class="hero reveal">
+            <div class="container hero__container">
+                <div class="hero-text">
+                    <span class="badge">Лёгкий и минималистичный</span>
+                    <h1>Современный лендинг с серверной частью</h1>
+                    <p>Светлая палитра, мобильная адаптация, аккуратная анимация карточек и готовность к хостингу на reg.ru.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary">Оставить заявку</button>
+                        <button class="btn btn-secondary">Посмотреть демо</button>
+                    </div>
+                </div>
+
+                <div class="hero-visual" id="stack">
+                    <div class="glass-card flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-face flip-card-front">
+                                <p>UI / UX</p>
+                                <strong>Анимации</strong>
+                            </div>
+                            <div class="flip-card-face flip-card-back">
+                                <strong>Плавные и быстрые</strong>
+                                <p>Без «плавающих» блоков, только аккуратный hover-эффект.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-face flip-card-front">
+                                <p>Mobile First</p>
+                                <strong>Адаптив</strong>
+                            </div>
+                            <div class="flip-card-face flip-card-back">
+                                <strong>До 360px</strong>
+                                <p>Сетка и шрифты адаптируются под смартфоны и планшеты.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about reveal" id="about">
+            <div class="container section__container">
+                <h2>О проекте</h2>
+                <p>Лендинг получил белый фон с лёгким серым оттенком, минималистичный хэдер/футер и API на Node.js для отправки формы.</p>
+            </div>
+        </section>
+
+        <section class="advantages reveal">
+            <div class="container section__container">
+                <h2>Анимации технологий</h2>
+                <div class="cards" id="techCards"></div>
+            </div>
+        </section>
+
+        <section class="contact reveal" id="contact">
+            <div class="container section__container">
+                <h2>Оставить заявку</h2>
+                <form id="leadForm">
+                    <input name="name" type="text" placeholder="Имя" required>
+                    <input name="email" type="email" placeholder="Email" required>
+                    <button class="btn btn-primary" type="submit">Отправить</button>
+                </form>
+                <p id="formStatus" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer__container">
+            <div>
+                <h3>Studio.</h3>
+                <p>Минималистичные сайты с быстрой загрузкой.</p>
+            </div>
+            <div>
+                <h4>Навигация</h4>
+                <a href="#about">О нас</a>
+                <a href="#stack">Технологии</a>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <a href="mailto:hello@studio.ru">hello@studio.ru</a>
+                <a href="tel:+79990000000">+7 (999) 000-00-00</a>
             </div>
         </div>
-        
-        <div class="hero-visual">
-            <div class="glass-card floating">
-                <p>UI / UX</p>
-                <strong>+ Анимации</strong>
-            </div>
-            <div class="glass-card floating delay">
-                <p>Mobile First</p>
-                <strong>Адаптив 100%</strong>
-            </div>
-        </div>
-    </div>
-</header>
+    </footer>
 
-<main>
-    <section class="about reveal">
-        <div class="container section__container">
-            <h2>О нас</h2>
-            <p>Мы делаем лаконичные сайты, которые выглядят современно и помогают пользователю быстро находить нужную информацию.</p>
-        </div>
-    </section>
-
-    <section class="advantages reveal">
-        <div class="container section__container">
-            <h2>Преимущества</h2>
-            <div class="cards">
-                <article class="card">⚡ Быстрая загрузка и лёгкая структура</article>
-                <article class="card">🎯 Чёткие акценты и удобная навигация</article>
-                <article class="card">📱 Полная адаптация под смартфоны и планшеты</article>
-            </div>
-        </div>
-    </section>
-
-    <section class="steps reveal">
-        <div class="container section__container">
-            <h2>Как это работает</h2>
-            <div class="steps-grid">
-                <div class="step"><span>1</span> Оставляете заявку</div>
-                <div class="step"><span>2</span> Согласуем задачу</div>
-                <div class="step"><span>3</span> Запускаем проект</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="reviews reveal">
-        <div class="container section__container">
-            <h2>Отзывы</h2>
-            <div class="reviews-grid">
-                <blockquote class="review">«Очень аккуратно и стильно, особенно на телефоне.»</blockquote>
-                <blockquote class="review">«Понравилась анимация и удобство страницы.»</blockquote>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing reveal">
-        <div class="container section__container">
-            <h2>Тарифы</h2>
-            <div class="pricing-grid">
-                <article class="price-card">Старт<br><strong>от 9 900 ₽</strong></article>
-                <article class="price-card featured">Стандарт<br><strong>от 19 900 ₽</strong></article>
-                <article class="price-card">Премиум<br><strong>от 39 900 ₽</strong></article>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact reveal">
-        <div class="container section__container">
-            <h2>Оставить заявку</h2>
-            <form>
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <button class="btn btn-primary" type="submit">Отправить</button>
-            </form>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <p>© 2026 Название компании</p>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
