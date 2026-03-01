@@ -1,61 +1,71 @@
-const drawer = document.getElementById('infoDrawer');
-const drawerToggle = document.getElementById('drawerToggle');
-const drawerClose = document.getElementById('drawerClose');
-const drawerBackdrop = document.getElementById('drawerBackdrop');
-const tabs = document.querySelectorAll('.drawer-tab');
-const panels = document.querySelectorAll('.drawer-panel');
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
 
-const openDrawer = () => {
-    drawer.classList.add('open');
-    drawer.setAttribute('aria-hidden', 'false');
-    drawerToggle.setAttribute('aria-expanded', 'true');
-    drawerBackdrop.hidden = false;
-};
+if (menuBtn && mobileNav) {
+  menuBtn.addEventListener('click', () => {
+    const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!expanded));
+    mobileNav.classList.toggle('is-open');
+  });
 
-const closeDrawer = () => {
-    drawer.classList.remove('open');
-    drawer.setAttribute('aria-hidden', 'true');
-    drawerToggle.setAttribute('aria-expanded', 'false');
-    drawerBackdrop.hidden = true;
-};
-
-drawerToggle.addEventListener('click', openDrawer);
-drawerClose.addEventListener('click', closeDrawer);
-drawerBackdrop.addEventListener('click', closeDrawer);
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-        closeDrawer();
-    }
-});
-
-tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-        const target = tab.dataset.tab;
-
-        tabs.forEach((item) => {
-            item.classList.remove('active');
-            item.setAttribute('aria-selected', 'false');
-        });
-
-        panels.forEach((panel) => {
-            panel.classList.toggle('active', panel.dataset.panel === target);
-        });
-
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
+  mobileNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('is-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
     });
-});
+  });
+}
 
-const revealElements = document.querySelectorAll('.reveal');
-
-const observer = new IntersectionObserver((entries) => {
+const revealItems = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(
+  (entries) => {
     entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 });
+      if (!entry.isIntersecting) {
+        return;
+      }
 
-revealElements.forEach((element) => observer.observe(element));
+      const delay = Number(entry.target.dataset.delay || 0);
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, delay);
+
+      revealObserver.unobserve(entry.target);
+    });
+  },
+  { threshold: 0.15 }
+);
+
+revealItems.forEach((item) => revealObserver.observe(item));
+
+const counters = document.querySelectorAll('[data-counter]');
+const counterObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      const el = entry.target;
+      const targetValue = Number(el.dataset.counter);
+      const isFloat = !Number.isInteger(targetValue);
+      const duration = 1200;
+      const start = performance.now();
+
+      const update = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const value = targetValue * progress;
+        el.textContent = isFloat ? value.toFixed(1) : Math.round(value);
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      };
+
+      requestAnimationFrame(update);
+      counterObserver.unobserve(el);
+    });
+  },
+  { threshold: 0.8 }
+);
+
+counters.forEach((counter) => counterObserver.observe(counter));
