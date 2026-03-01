@@ -23,10 +23,13 @@
   <div class="blob blob--one" aria-hidden="true"></div>
   <div class="blob blob--two" aria-hidden="true"></div>
 
-  <header class="header">
+  <header class="header" id="siteHeader">
     <div class="container header__wrap">
       <a href="#top" class="logo">ATMOSPHERE<span>STUDIO</span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
+      <div class="header__actions">
+        <button class="theme-btn" id="themeBtn" aria-label="Переключить тему">Тёмная тема</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
+      </div>
       <nav class="nav" id="mobileNav">
         <a href="#services">Услуги</a>
         <a href="#portfolio">Портфолио</a>
@@ -80,17 +83,41 @@
         <p class="eyebrow reveal">Что сделали</p>
         <h2 class="reveal">Полная переработка под лендинг</h2>
         <div class="cards">
-          <article class="feature reveal">
-            <h3>Визуальный стиль</h3>
-            <p>Минимализм, контрастный свет, прозрачные поверхности и мягкие градиенты как в референсе.</p>
+          <article class="feature feature--flip reveal" tabindex="0">
+            <div class="feature__inner">
+              <div class="feature__face feature__face--front">
+                <h3>Визуальный стиль</h3>
+                <p>Минимализм, контрастный свет, прозрачные поверхности и мягкие градиенты как в референсе.</p>
+              </div>
+              <div class="feature__face feature__face--back">
+                <h3>Что внутри</h3>
+                <p>Контрастные акценты, спокойный фон и типографика, которая удерживает фокус на оффере.</p>
+              </div>
+            </div>
           </article>
-          <article class="feature reveal" data-delay="100">
-            <h3>Красивые анимации</h3>
-            <p>Появление блоков при скролле, hover-эффекты, параллакс-фон и анимированные счётчики.</p>
+          <article class="feature feature--flip reveal" data-delay="100" tabindex="0">
+            <div class="feature__inner">
+              <div class="feature__face feature__face--front">
+                <h3>Красивые анимации</h3>
+                <p>Появление блоков при скролле, hover-эффекты, параллакс-фон и анимированные счётчики.</p>
+              </div>
+              <div class="feature__face feature__face--back">
+                <h3>Дополнительный эффект</h3>
+                <p>Плавные микровзаимодействия усиливают ощущение премиум-продукта и повышают вовлечённость.</p>
+              </div>
+            </div>
           </article>
-          <article class="feature reveal" data-delay="180">
-            <h3>Адаптив</h3>
-            <p>От 320px до широких экранов: читаемая типографика и удобная навигация на всех устройствах.</p>
+          <article class="feature feature--flip reveal" data-delay="180" tabindex="0">
+            <div class="feature__inner">
+              <div class="feature__face feature__face--front">
+                <h3>Адаптив</h3>
+                <p>От 320px до широких экранов: читаемая типографика и удобная навигация на всех устройствах.</p>
+              </div>
+              <div class="feature__face feature__face--back">
+                <h3>Польза для бизнеса</h3>
+                <p>Конверсионная логика сохраняется на мобильных и десктопных устройствах без потери качества.</p>
+              </div>
+            </div>
           </article>
         </div>
     </div>

@@ -1,5 +1,8 @@
 const menuBtn = document.getElementById('menuBtn');
 const mobileNav = document.getElementById('mobileNav');
+const themeBtn = document.getElementById('themeBtn');
+const siteHeader = document.getElementById('siteHeader');
+const themeStorageKey = 'landing-theme';
 
 if (menuBtn && mobileNav) {
   menuBtn.addEventListener('click', () => {
@@ -13,6 +16,43 @@ if (menuBtn && mobileNav) {
       mobileNav.classList.remove('is-open');
       menuBtn.setAttribute('aria-expanded', 'false');
     });
+  });
+}
+
+const setTheme = (theme) => {
+  const isLight = theme === 'light';
+  document.body.dataset.theme = isLight ? 'light' : 'dark';
+
+  if (themeBtn) {
+    themeBtn.textContent = isLight ? 'Светлая тема' : 'Тёмная тема';
+  }
+};
+
+const savedTheme = localStorage.getItem(themeStorageKey);
+setTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    localStorage.setItem(themeStorageKey, nextTheme);
+  });
+}
+
+let lastScrollTop = 0;
+
+if (siteHeader) {
+  window.addEventListener('scroll', () => {
+    const currentScrollTop = window.scrollY;
+    const isMobileMenuOpen = mobileNav?.classList.contains('is-open');
+
+    if (isMobileMenuOpen || currentScrollTop < 80 || currentScrollTop < lastScrollTop) {
+      siteHeader.classList.remove('header--hidden');
+    } else {
+      siteHeader.classList.add('header--hidden');
+    }
+
+    lastScrollTop = currentScrollTop;
   });
 }
 
