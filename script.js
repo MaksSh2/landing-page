@@ -24,12 +24,12 @@ const setTheme = (theme) => {
   document.body.dataset.theme = isLight ? 'light' : 'dark';
 
   if (themeBtn) {
-    themeBtn.textContent = isLight ? 'Светлая тема' : 'Тёмная тема';
+    themeBtn.textContent = isLight ? 'Тёмная тема' : 'Светлая тема';
   }
 };
 
 const savedTheme = localStorage.getItem(themeStorageKey);
-setTheme(savedTheme === 'light' ? 'light' : 'dark');
+setTheme(savedTheme === 'dark' ? 'dark' : 'light');
 
 if (themeBtn) {
   themeBtn.addEventListener('click', () => {
