@@ -102,7 +102,7 @@ body[data-theme='dark'] .card-label { color: #aeb9ff; }
 .cards { grid-template-columns: repeat(3,minmax(0,1fr)); }
 .feature { padding: 0; min-height: 210px; perspective: 1100px; }
 .feature__inner { position: relative; width: 100%; height: 100%; min-height: 210px; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-.feature__face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 18px; padding: 1.2rem; display: grid; align-content: center; gap: .3rem; }
+.feature__face { justify-content: center; position: absolute; inset: 0; backface-visibility: hidden; border-radius: 18px; padding: 1.2rem; display: grid; align-content: center; gap: .3rem; }
 .feature__face--back { transform: rotateY(180deg); background: linear-gradient(135deg, rgba(142,126,255,.2), rgba(77,201,255,.18)); }
 .feature--flip:hover .feature__inner,.feature--flip:focus-within .feature__inner,.feature--flip:focus .feature__inner { transform: rotateY(180deg); }
 
