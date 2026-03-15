@@ -109,3 +109,72 @@ const counterObserver = new IntersectionObserver(
 );
 
 counters.forEach((counter) => counterObserver.observe(counter));
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 60){
+
+    siteHeader.classList.add("scrolled")
+
+  }else{
+
+    siteHeader.classList.remove("scrolled")
+
+  }
+
+})
+
+const buttons = document.querySelectorAll(".btn")
+
+buttons.forEach(btn => {
+
+  btn.addEventListener("mousemove", e => {
+
+    const rect = btn.getBoundingClientRect()
+
+    const x = e.clientX - rect.left - rect.width/2
+    const y = e.clientY - rect.top - rect.height/2
+
+    btn.style.transform =
+      `translate(${x*0.08}px, ${y*0.08}px) scale(1.05)`
+
+  })
+
+  btn.addEventListener("mouseleave", () => {
+
+    btn.style.transform = ""
+
+  })
+
+})
+
+const progressBar = document.querySelector(".scroll-progress")
+
+window.addEventListener("scroll",()=>{
+
+const scroll = window.scrollY
+const height = document.body.scrollHeight - window.innerHeight
+
+const progress = (scroll / height) * 100
+
+progressBar.style.width = progress + "%"
+
+})
+
+const spotlightCards = document.querySelectorAll(".feature, .hero-card")
+
+spotlightCards.forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const rect = card.getBoundingClientRect()
+
+const x = e.clientX - rect.left
+const y = e.clientY - rect.top
+
+card.style.setProperty("--x", x + "px")
+card.style.setProperty("--y", y + "px")
+
+})
+
+})
