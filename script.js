@@ -4,67 +4,91 @@ const themeBtn = document.getElementById('themeBtn');
 const siteHeader = document.getElementById('siteHeader');
 const themeStorageKey = 'landing-theme';
 
+/* ---------------- MOBILE MENU ---------------- */
+
 if (menuBtn && mobileNav) {
   menuBtn.addEventListener('click', () => {
     const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-    menuBtn.setAttribute('aria-expanded', String(!expanded));
+
+    menuBtn.setAttribute('aria-expanded', !expanded);
     mobileNav.classList.toggle('is-open');
   });
 
-  mobileNav.querySelectorAll('a').forEach((link) => {
+  // закрытие меню при клике на ссылку
+  mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.remove('is-open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.setAttribute('aria-expanded', false);
     });
   });
 }
 
-const setTheme = (theme) => {
-  const isLight = theme === 'light';
-  document.body.dataset.theme = isLight ? 'light' : 'dark';
+/* ---------------- THEME SWITCH ---------------- */
 
-  if (themeBtn) {
-    themeBtn.textContent = isLight ? 'Тёмная тема' : 'Светлая тема';
-  }
-};
+function setTheme(theme) {
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem(themeStorageKey, theme);
+  themeBtn.textContent = theme === 'dark' ? 'Светлая тема' : 'Тёмная тема';
+}
 
+// загрузка темы из памяти
 const savedTheme = localStorage.getItem(themeStorageKey);
-setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+if (savedTheme) setTheme(savedTheme);
 
-if (themeBtn) {
-  themeBtn.addEventListener('click', () => {
-    const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-    setTheme(nextTheme);
-    localStorage.setItem(themeStorageKey, nextTheme);
-  });
-}
+themeBtn.addEventListener('click', () => {
+  const current = document.body.getAttribute('data-theme');
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
 
-let lastScrollTop = 0;
+/* ---------------- HEADER ON SCROLL ---------------- */
 
-if (siteHeader) {
-  window.addEventListener('scroll', () => {
-    const currentScrollTop = window.scrollY;
-    const isMobileMenuOpen = mobileNav?.classList.contains('is-open');
+let lastScroll = 0;
 
-    if (isMobileMenuOpen || currentScrollTop < 80 || currentScrollTop < lastScrollTop) {
-      siteHeader.classList.remove('header--hidden');
-    } else {
-      siteHeader.classList.add('header--hidden');
-    }
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
 
-    lastScrollTop = currentScrollTop;
-  });
-}
+  // эффект прозрачности шапки
+  if (currentScroll > 30) {
+    siteHeader.classList.add('scrolled');
+  } else {
+    siteHeader.classList.remove('scrolled');
+  }
 
-const revealItems = document.querySelectorAll('.reveal');
+  // скрытие при скролле вниз
+  if (currentScroll > lastScroll && currentScroll > 200) {
+    siteHeader.classList.add('header--hidden');
+  } else {
+    siteHeader.classList.remove('header--hidden');
+  }
+
+  lastScroll = currentScroll;
+});
+
+/* ---------------- SCROLL PROGRESS BAR ---------------- */
+
+const progressBar = document.querySelector('.scroll-progress');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const progress = (scrollTop / height) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+/* ---------------- REVEAL ANIMATION ---------------- */
+
+const revealElements = document.querySelectorAll('.reveal');
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
 
-      const delay = Number(entry.target.dataset.delay || 0);
+      const delay = entry.target.dataset.delay || 0;
+
       setTimeout(() => {
         entry.target.classList.add('visible');
       }, delay);
@@ -75,106 +99,17 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.15 }
 );
 
-revealItems.forEach((item) => revealObserver.observe(item));
+revealElements.forEach(el => revealObserver.observe(el));
 
-const counters = document.querySelectorAll('[data-counter]');
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
+/* ---------------- MOUSE LIGHT EFFECT ---------------- */
 
-      const el = entry.target;
-      const targetValue = Number(el.dataset.counter);
-      const isFloat = !Number.isInteger(targetValue);
-      const duration = 1200;
-      const start = performance.now();
+document.addEventListener('mousemove', e => {
+  document.querySelectorAll('.feature, .hero-card').forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-      const update = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const value = targetValue * progress;
-        el.textContent = isFloat ? value.toFixed(1) : Math.round(value);
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      };
-
-      requestAnimationFrame(update);
-      counterObserver.unobserve(el);
-    });
-  },
-  { threshold: 0.8 }
-);
-
-counters.forEach((counter) => counterObserver.observe(counter));
-
-window.addEventListener("scroll", () => {
-
-  if(window.scrollY > 60){
-
-    siteHeader.classList.add("scrolled")
-
-  }else{
-
-    siteHeader.classList.remove("scrolled")
-
-  }
-
-})
-
-const buttons = document.querySelectorAll(".btn")
-
-buttons.forEach(btn => {
-
-  btn.addEventListener("mousemove", e => {
-
-    const rect = btn.getBoundingClientRect()
-
-    const x = e.clientX - rect.left - rect.width/2
-    const y = e.clientY - rect.top - rect.height/2
-
-    btn.style.transform =
-      `translate(${x*0.08}px, ${y*0.08}px) scale(1.05)`
-
-  })
-
-  btn.addEventListener("mouseleave", () => {
-
-    btn.style.transform = ""
-
-  })
-
-})
-
-const progressBar = document.querySelector(".scroll-progress")
-
-window.addEventListener("scroll",()=>{
-
-const scroll = window.scrollY
-const height = document.body.scrollHeight - window.innerHeight
-
-const progress = (scroll / height) * 100
-
-progressBar.style.width = progress + "%"
-
-})
-
-const spotlightCards = document.querySelectorAll(".feature, .hero-card")
-
-spotlightCards.forEach(card=>{
-
-card.addEventListener("mousemove",(e)=>{
-
-const rect = card.getBoundingClientRect()
-
-const x = e.clientX - rect.left
-const y = e.clientY - rect.top
-
-card.style.setProperty("--x", x + "px")
-card.style.setProperty("--y", y + "px")
-
-})
-
-})
+    card.style.setProperty('--x', x + 'px');
+    card.style.setProperty('--y', y + 'px');
+  });
+});
